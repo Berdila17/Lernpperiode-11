@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WorkoutTracker.MainPage"
+    Title="Workout Tracker">
+
+    <VerticalStackLayout
+        Padding="30"
+        Spacing="20">
+
+        <Label
+            Text="Workout Tracker"
+            FontSize="32"
+            FontAttributes="Bold"
+            HorizontalOptions="Center" />
+
+        <Label
+            Text="Neues Workout erstellen"
+            FontSize="20" />
+
+        <Entry
+            x:Name="WorkoutNameEntry"
+            Placeholder="Name des Workouts"
+            MaxLength="50" />
+
+        <Button
+            Text="Workout erstellen"
+            Clicked="OnCreateWorkoutClicked" />
+
+        <Label
+            x:Name="ErrorLabel"
+            TextColor="Red"
+            IsVisible="False" />
+
+        <Label
+            Text="Meine Workouts"
+            FontSize="22"
+            FontAttributes="Bold"
+            Margin="0,20,0,0" />
+
+        <CollectionView
+            ItemsSource="{Binding Workouts}">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Frame
+                        Padding="15"
+                        Margin="0,5">
+
+                        <Label
+                            Text="{Binding .}"
+                            FontSize="18" />
+
+                    </Frame>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </VerticalStackLayout>
+
+</ContentPage>
