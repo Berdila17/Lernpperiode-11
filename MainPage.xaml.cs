@@ -17,7 +17,7 @@ public partial class MainPage : ContentPage
 
         BindingContext = this;
 
-        // Speicherort für unsere Datei
+        
         filePath = Path.Combine(
             FileSystem.AppDataDirectory,
             "workouts.json"
@@ -47,7 +47,6 @@ public partial class MainPage : ContentPage
         WorkoutNameEntry.Text = "";
         ErrorLabel.IsVisible = false;
 
-        // Workouts nach jeder Änderung speichern
         await SaveWorkouts();
     }
 
@@ -60,7 +59,7 @@ public partial class MainPage : ContentPage
 
     private async Task LoadWorkouts()
     {
-        // Prüfen, ob bereits eine Datei existiert
+        
         if (!File.Exists(filePath))
         {
             return;
