@@ -3,64 +3,133 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="WorkoutTracker.MainPage"
+    x:Class="Lernperiode_10.MainPage"
     Title="Workout Tracker">
 
-    <VerticalStackLayout
-        Padding="30"
-        Spacing="20">
+    <ScrollView>
 
-        <Label
-            Text="Workout Tracker"
-            FontSize="32"
-            FontAttributes="Bold"
-            HorizontalOptions="Center" />
+        <VerticalStackLayout
+            Padding="30"
+            Spacing="20">
 
-        <Label
-            Text="Neues Workout erstellen"
-            FontSize="20" />
+            <Label
+                Text="Workout Tracker"
+                FontSize="32"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
 
-        <Entry
-            x:Name="WorkoutNameEntry"
-            Placeholder="Name des Workouts"
-            MaxLength="50" />
+            <Label
+                Text="Neues Workout"
+                FontSize="20"
+                FontAttributes="Bold" />
 
-        <Button
-            Text="Workout erstellen"
-            Clicked="OnCreateWorkoutClicked" />
+            <Entry
+                x:Name="WorkoutNameEntry"
+                Placeholder="Workout-Name eingeben" />
 
-        <Label
-            x:Name="ErrorLabel"
-            TextColor="Red"
-            IsVisible="False" />
+            <Button
+                Text="Workout erstellen"
+                Clicked="OnCreateWorkoutClicked" />
 
-        <Label
-            Text="Meine Workouts"
-            FontSize="22"
-            FontAttributes="Bold"
-            Margin="0,20,0,0" />
+            <Label
+                x:Name="ErrorLabel"
+                TextColor="Red"
+                IsVisible="False" />
 
-        <CollectionView
-            ItemsSource="{Binding Workouts}">
+            <Label
+                Text="Meine Workouts"
+                FontSize="22"
+                FontAttributes="Bold" />
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
+            <CollectionView
+                ItemsSource="{Binding Workouts}">
 
-                    <Frame
-                        Padding="15"
-                        Margin="0,5">
+                <CollectionView.ItemTemplate>
 
-                        <Label
-                            Text="{Binding .}"
-                            FontSize="18" />
+                    <DataTemplate>
 
-                    </Frame>
+                        <Frame
+                            Padding="15"
+                            Margin="0,5">
 
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
+                            <VerticalStackLayout
+                                Spacing="10">
 
-        </CollectionView>
+                                <Label
+                                    Text="{Binding Name}"
+                                    FontSize="20"
+                                    FontAttributes="Bold" />
 
-    </VerticalStackLayout>
+                                <Label
+                                    Text="Übungen:" />
+
+                                <CollectionView
+                                    ItemsSource="{Binding Exercises}">
+
+                                    <CollectionView.ItemTemplate>
+
+                                        <DataTemplate>
+
+                                            <Label
+                                                Text="{Binding .}" />
+
+                                        </DataTemplate>
+
+                                    </CollectionView.ItemTemplate>
+
+                                </CollectionView>
+
+                                <Button
+                                    Text="Workout auswählen"
+                                    CommandParameter="{Binding .}"
+                                    Clicked="OnSelectWorkoutClicked" />
+
+                                <Button
+                                    Text="Workout löschen"
+                                    CommandParameter="{Binding .}"
+                                    Clicked="OnDeleteWorkoutClicked" />
+
+                            </VerticalStackLayout>
+
+                        </Frame>
+
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+            <Label
+                x:Name="SelectedWorkoutLabel"
+                Text="Kein Workout ausgewählt"
+                FontAttributes="Bold" />
+
+            <Entry
+                x:Name="ExerciseNameEntry"
+                Placeholder="Übung eingeben" />
+
+            <Button
+                Text="Übung hinzufügen"
+                Clicked="OnAddExerciseClicked" />
+
+            <Label
+                Text="Pausentimer"
+                FontSize="22"
+                FontAttributes="Bold"
+                Margin="0,20,0,0" />
+
+            <Label
+                x:Name="TimerLabel"
+                Text="60"
+                FontSize="30"
+                HorizontalOptions="Center" />
+
+            <Button
+                Text="60 Sekunden Pause starten"
+                Clicked="OnStartTimerClicked" />
+
+        </VerticalStackLayout>
+
+    </ScrollView>
 
 </ContentPage>
