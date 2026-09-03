@@ -54,9 +54,7 @@ namespace Lernperiode_10
         }
 
 
-        // -------------------------
         // WORKOUT ERSTELLEN
-        // -------------------------
 
         private async void OnCreateWorkoutClicked(object sender, EventArgs e)
         {
@@ -82,9 +80,7 @@ namespace Lernperiode_10
         }
 
 
-        // -------------------------
         // WORKOUT ÖFFNEN
-        // -------------------------
 
         private void OnOpenWorkoutClicked(object sender, EventArgs e)
         {
@@ -115,9 +111,7 @@ namespace Lernperiode_10
         }
 
 
-        // -------------------------
         // WORKOUT BEARBEITEN
-        // -------------------------
 
         private async void OnUpdateWorkoutClicked(object sender, EventArgs e)
         {
@@ -143,9 +137,7 @@ namespace Lernperiode_10
         }
 
 
-        // -------------------------
         // ÜBUNG HINZUFÜGEN / BEARBEITEN
-        // -------------------------
 
         private async void OnSaveExerciseClicked(object sender, EventArgs e)
         {
@@ -208,13 +200,9 @@ namespace Lernperiode_10
             }
 
 
-            ExerciseNameEntry.Text = "";
-            SetsEntry.Text = "";
-            RepsEntry.Text = "";
-            WeightEntry.Text = "";
+            ClearExerciseFields();
 
             DetailErrorLabel.Text = "";
-
             SaveExerciseButton.Text = "Übung hinzufügen";
 
             await SaveData();
@@ -236,9 +224,52 @@ namespace Lernperiode_10
         }
 
 
-        // -------------------------
+        //  ÜBUNG LÖSCHEN
+
+        private async void OnDeleteExerciseClicked(object sender, EventArgs e)
+        {
+            if (selectedWorkout == null)
+                return;
+
+            Button button = (Button)sender;
+
+            Exercise exercise = (Exercise)button.CommandParameter;
+
+            
+            selectedWorkout.Exercises.Remove(exercise);
+
+            
+            SelectedExercises.Remove(exercise);
+
+
+          
+            if (selectedExercise == exercise)
+            {
+                selectedExercise = null;
+
+                ClearExerciseFields();
+
+                SaveExerciseButton.Text = "Übung hinzufügen";
+            }
+
+            DetailErrorLabel.Text =
+                $"Übung {exercise.Name} wurde gelöscht.";
+
+           
+            await SaveData();
+        }
+
+
+        private void ClearExerciseFields()
+        {
+            ExerciseNameEntry.Text = "";
+            SetsEntry.Text = "";
+            RepsEntry.Text = "";
+            WeightEntry.Text = "";
+        }
+
+
         // TRAINING ABSCHLIESSEN
-        // -------------------------
 
         private async void OnFinishTrainingClicked(object sender, EventArgs e)
         {
@@ -260,9 +291,7 @@ namespace Lernperiode_10
         }
 
 
-        // -------------------------
         // NAVIGATION
-        // -------------------------
 
         private void OnOverviewClicked(object sender, EventArgs e)
         {
@@ -300,9 +329,7 @@ namespace Lernperiode_10
         }
 
 
-        // -------------------------
         // TIMER
-        // -------------------------
 
         private void OnStartTimerClicked(object sender, EventArgs e)
         {
@@ -343,9 +370,7 @@ namespace Lernperiode_10
         }
 
 
-        // -------------------------
         // SPEICHERN
-        // -------------------------
 
         private async Task SaveData()
         {
@@ -403,7 +428,10 @@ namespace Lernperiode_10
         private void RefreshExerciseList()
         {
             BindableLayout.SetItemsSource(ExerciseList, null);
-            BindableLayout.SetItemsSource(ExerciseList, SelectedExercises);
+            BindableLayout.SetItemsSource(
+                ExerciseList,
+                SelectedExercises
+            );
         }
     }
 
