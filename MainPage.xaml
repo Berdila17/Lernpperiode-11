@@ -41,9 +41,7 @@
 
 
 
-            <!-- ======================= -->
             <!-- ÜBERSICHT -->
-            <!-- ======================= -->
 
             <VerticalStackLayout
                 x:Name="OverviewView"
@@ -83,8 +81,7 @@
 
                         <DataTemplate>
 
-                            <Border
-                                Padding="15">
+                            <Border Padding="15">
 
                                 <VerticalStackLayout>
 
@@ -138,9 +135,7 @@
 
 
 
-            <!-- ======================= -->
             <!-- WORKOUT DETAIL -->
-            <!-- ======================= -->
 
             <VerticalStackLayout
                 x:Name="DetailView"
@@ -218,18 +213,29 @@
 
                         <DataTemplate>
 
-                            <Border
-                                Padding="10">
+                            <Border Padding="10">
 
-                                <VerticalStackLayout>
+                                <VerticalStackLayout
+                                    Spacing="8">
 
                                     <Label
                                         Text="{Binding DisplayText}" />
 
-                                    <Button
-                                        Text="Bearbeiten"
-                                        CommandParameter="{Binding .}"
-                                        Clicked="OnEditExerciseClicked" />
+
+                                    <HorizontalStackLayout
+                                        Spacing="10">
+
+                                        <Button
+                                            Text="Bearbeiten"
+                                            CommandParameter="{Binding .}"
+                                            Clicked="OnEditExerciseClicked" />
+
+                                        <Button
+                                            Text="Löschen"
+                                            CommandParameter="{Binding .}"
+                                            Clicked="OnDeleteExerciseClicked" />
+
+                                    </HorizontalStackLayout>
 
                                 </VerticalStackLayout>
 
@@ -251,9 +257,7 @@
 
 
 
-            <!-- ======================= -->
             <!-- TIMER -->
-            <!-- ======================= -->
 
             <VerticalStackLayout
                 x:Name="TimerView"
