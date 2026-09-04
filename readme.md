@@ -41,14 +41,19 @@ Heute habe ich meinen Workout Tracker weiterentwickelt. Ich habe die lokale Spei
 
 ## 4.9.2026
 
-- [ ] Als Benutzer möchte ich einzelne Übungen aus einem Workout löschen können, damit ich meinen Trainingsplan nachträglich anpassen kann.
+- [X] Als Benutzer möchte ich einzelne Übungen aus einem Workout löschen können, damit ich meinen Trainingsplan nachträglich anpassen kann.
+- [X] Als Benutzer möchte ich die Dauer meines Pausentimers selbst einstellen können, damit ich je nach Übung unterschiedliche Pausenzeiten verwenden kann.
+- [X] Als Benutzer möchte ich meine Fortschritte bei einer Übung über mehrere Trainings hinweg sehen können, damit ich erkennen kann, ob ich mich bei Gewicht oder Wiederholungen verbessert habe.
+- [X] Als Benutzer möchte ich ein bestehendes Workout duplizieren können, damit ich ähnliche Trainingspläne erstellen kann, ohne alle Übungen erneut eingeben zu müssen.
 
-- [ ] Als Benutzer möchte ich die Dauer meines Pausentimers selbst einstellen können, damit ich je nach Übung unterschiedliche Pausenzeiten verwenden kann.
+✍️ Heute habe ich meinen Workout Tracker weiterentwickelt. Ich habe die Möglichkeit ergänzt, einzelne Übungen aus einem Workout zu löschen. Zusätzlich kann die Dauer des Pausentimers nun selbst festgelegt werden. Weiter habe ich eine einfache Fortschrittsanzeige umgesetzt, mit der vergangene Werte einer Übung wie Sätze, Wiederholungen und Gewicht über mehrere abgeschlossene Trainings hinweg betrachtet werden können. Ausserdem können bestehende Workouts inklusive ihrer Übungen dupliziert werden. Dabei habe ich unter anderem weiter mit Collections, Objekten, Schleifen, Bedingungen, Data Binding und der lokalen JSON-Speicherung gearbeitet.
 
-- [ ] Als Benutzer möchte ich meine Fortschritte bei einer Übung über mehrere Trainings hinweg sehen können, damit ich erkennen kann, ob ich mich bei Gewicht oder Wiederholungen verbessert habe.
 
-- [ ] Als Benutzer möchte ich ein bestehendes Workout duplizieren können, damit ich ähnliche Trainingspläne erstellen kann, ohne alle Übungen erneut eingeben zu müssen.
+## 11.9.2026
 
+- [ ] Als Benutzer möchte ich während eines Trainings einzelne Sätze als erledigt markieren können, damit ich sehen kann, welche Teile meines Trainings ich bereits abgeschlossen habe.
+- [ ] Als Benutzer möchte ich das Trainingsvolumen einer Übung berechnen lassen können, damit ich meine Trainingsleistung besser vergleichen kann.
+- [ ] Als Benutzer möchte ich zu einer Übung persönliche Notizen speichern können, damit ich Hinweise zu Technik, Ausführung oder meinem Trainingsgefühl festhalten kann.
 
   
 ☝️ Vergessen Sie nicht, einen ersten Code und Skizze auf github hochzuladen!
