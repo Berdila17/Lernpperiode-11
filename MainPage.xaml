@@ -12,6 +12,7 @@
             Padding="25"
             Spacing="20">
 
+
             <Label
                 Text="Workout Tracker"
                 FontSize="30"
@@ -19,7 +20,7 @@
                 HorizontalOptions="Center" />
 
 
-            <!-- Navigation -->
+            <!-- NAVIGATION -->
 
             <HorizontalStackLayout
                 Spacing="10"
@@ -41,24 +42,30 @@
 
 
 
+            <!-- ========================= -->
             <!-- ÜBERSICHT -->
+            <!-- ========================= -->
 
             <VerticalStackLayout
                 x:Name="OverviewView"
                 Spacing="15">
+
 
                 <Label
                     Text="Neues Workout"
                     FontSize="22"
                     FontAttributes="Bold" />
 
+
                 <Entry
                     x:Name="WorkoutNameEntry"
                     Placeholder="Workout-Name" />
 
+
                 <Button
                     Text="Workout erstellen"
                     Clicked="OnCreateWorkoutClicked" />
+
 
                 <Label
                     x:Name="ErrorLabel"
@@ -72,6 +79,7 @@
                     Margin="0,20,0,0" />
 
 
+
                 <VerticalStackLayout
                     x:Name="WorkoutList"
                     Spacing="10"
@@ -83,17 +91,35 @@
 
                             <Border Padding="15">
 
-                                <VerticalStackLayout>
+                                <VerticalStackLayout
+                                    Spacing="8">
+
 
                                     <Label
                                         Text="{Binding Name}"
                                         FontSize="18"
                                         FontAttributes="Bold" />
 
+
                                     <Button
                                         Text="Workout öffnen"
                                         CommandParameter="{Binding .}"
                                         Clicked="OnOpenWorkoutClicked" />
+
+
+                                    <!-- NEU -->
+
+                                    <Button
+                                        Text="Workout duplizieren"
+                                        CommandParameter="{Binding .}"
+                                        Clicked="OnDuplicateWorkoutClicked" />
+
+
+                                    <Button
+                                        Text="Workout löschen"
+                                        CommandParameter="{Binding .}"
+                                        Clicked="OnDeleteWorkoutClicked" />
+
 
                                 </VerticalStackLayout>
 
@@ -104,6 +130,10 @@
                     </BindableLayout.ItemTemplate>
 
                 </VerticalStackLayout>
+
+
+
+                <!-- TRAININGSHISTORIE -->
 
 
                 <Label
@@ -131,16 +161,60 @@
 
                 </VerticalStackLayout>
 
+
+
+                <!-- FORTSCHRITT -->
+
+
+                <Label
+                    Text="Fortschritt einer Übung"
+                    FontSize="22"
+                    FontAttributes="Bold"
+                    Margin="0,25,0,0" />
+
+
+                <Entry
+                    x:Name="ProgressExerciseEntry"
+                    Placeholder="z.B. Bankdrücken" />
+
+
+                <Button
+                    Text="Fortschritt anzeigen"
+                    Clicked="OnShowProgressClicked" />
+
+
+                <VerticalStackLayout
+                    BindableLayout.ItemsSource="{Binding ProgressItems}"
+                    Spacing="5">
+
+                    <BindableLayout.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Label
+                                Text="{Binding .}" />
+
+                        </DataTemplate>
+
+                    </BindableLayout.ItemTemplate>
+
+                </VerticalStackLayout>
+
+
             </VerticalStackLayout>
 
 
 
+            <!-- ========================= -->
             <!-- WORKOUT DETAIL -->
+            <!-- ========================= -->
+
 
             <VerticalStackLayout
                 x:Name="DetailView"
                 IsVisible="False"
                 Spacing="15">
+
 
                 <Label
                     x:Name="DetailWorkoutNameLabel"
@@ -153,13 +227,19 @@
                     Text="Workout bearbeiten"
                     FontAttributes="Bold" />
 
+
                 <Entry
                     x:Name="EditWorkoutNameEntry"
                     Placeholder="Neuer Workout-Name" />
 
+
                 <Button
                     Text="Workout-Name speichern"
                     Clicked="OnUpdateWorkoutClicked" />
+
+
+
+                <!-- ÜBUNG -->
 
 
                 <Label
@@ -168,24 +248,29 @@
                     FontAttributes="Bold"
                     Margin="0,20,0,0" />
 
+
                 <Entry
                     x:Name="ExerciseNameEntry"
                     Placeholder="Übung z.B. Bankdrücken" />
+
 
                 <Entry
                     x:Name="SetsEntry"
                     Placeholder="Sätze"
                     Keyboard="Numeric" />
 
+
                 <Entry
                     x:Name="RepsEntry"
                     Placeholder="Wiederholungen"
                     Keyboard="Numeric" />
 
+
                 <Entry
                     x:Name="WeightEntry"
                     Placeholder="Gewicht in kg"
                     Keyboard="Numeric" />
+
 
                 <Button
                     x:Name="SaveExerciseButton"
@@ -204,6 +289,7 @@
                     FontAttributes="Bold" />
 
 
+
                 <VerticalStackLayout
                     x:Name="ExerciseList"
                     BindableLayout.ItemsSource="{Binding SelectedExercises}"
@@ -218,6 +304,7 @@
                                 <VerticalStackLayout
                                     Spacing="8">
 
+
                                     <Label
                                         Text="{Binding DisplayText}" />
 
@@ -225,17 +312,21 @@
                                     <HorizontalStackLayout
                                         Spacing="10">
 
+
                                         <Button
                                             Text="Bearbeiten"
                                             CommandParameter="{Binding .}"
                                             Clicked="OnEditExerciseClicked" />
+
 
                                         <Button
                                             Text="Löschen"
                                             CommandParameter="{Binding .}"
                                             Clicked="OnDeleteExerciseClicked" />
 
+
                                     </HorizontalStackLayout>
+
 
                                 </VerticalStackLayout>
 
@@ -253,16 +344,21 @@
                     Clicked="OnFinishTrainingClicked"
                     Margin="0,20,0,0" />
 
+
             </VerticalStackLayout>
 
 
 
+            <!-- ========================= -->
             <!-- TIMER -->
+            <!-- ========================= -->
+
 
             <VerticalStackLayout
                 x:Name="TimerView"
                 IsVisible="False"
                 Spacing="20">
+
 
                 <Label
                     Text="Pausentimer"
@@ -270,25 +366,51 @@
                     FontAttributes="Bold"
                     HorizontalOptions="Center" />
 
+
+                <!-- NEU: ZEIT AUSWÄHLEN -->
+
+
+                <Entry
+                    x:Name="TimerSecondsEntry"
+                    Placeholder="Pause in Sekunden"
+                    Keyboard="Numeric" />
+
+
+                <Button
+                    Text="Zeit übernehmen"
+                    Clicked="OnSetTimerClicked" />
+
+
+                <Label
+                    x:Name="TimerErrorLabel"
+                    TextColor="Red"
+                    HorizontalOptions="Center" />
+
+
                 <Label
                     x:Name="TimerLabel"
                     Text="60"
                     FontSize="50"
                     HorizontalOptions="Center" />
 
+
                 <Button
                     Text="Start"
                     Clicked="OnStartTimerClicked" />
+
 
                 <Button
                     Text="Pause"
                     Clicked="OnPauseTimerClicked" />
 
+
                 <Button
                     Text="Zurücksetzen"
                     Clicked="OnResetTimerClicked" />
 
+
             </VerticalStackLayout>
+
 
         </VerticalStackLayout>
 
